@@ -68,6 +68,7 @@ namespace ZUMO_ir_VS1838 {
     const MICROBIT_IR_DATAGRAM = 778;
     const MICROBIT_IR_BUTTON_PRESSED_ID = 789;
     const MICROBIT_IR_BUTTON_RELEASED_ID = 790;
+    const IR_PIN = DAL.PA12;
     const IR_REPEAT = 256;
     const IR_INCOMPLETE = 257;
     const IR_DATAGRAM = 258;
@@ -160,15 +161,18 @@ namespace ZUMO_ir_VS1838 {
      * @param pin IR receiver pin, eg: DigitalPin.P0
      */
     //% blockId="infrared_connect_receiver"
-    //% block="connect IR receiver at pin %pin"
-    //% pin.fieldEditor="gridpicker"
-    //% pin.fieldOptions.columns=4
-    //% pin.fieldOptions.tooltips=0
-    //% pin.defl = DAL.PA12
+    //% block="connect IR receiver at pin %pin2"
+    //% pin2.fieldEditor="gridpicker"
+    //% pin2.fieldOptions.columns=4
+    //% pin2.fieldOptions.tooltips=0
+    //% pin2.defl = DAL.PA12
     //% weight=90
     export function connectIrReceiver(
-        pin: DigitalInOutPin,
+        //pin: DigitalInOutPin,
     ): void {
+
+        
+
         if (irState) {
             return;
         }
@@ -181,7 +185,8 @@ namespace ZUMO_ir_VS1838 {
             hiword: 0, // TODO replace with uint32
             loword: 0,
         };
-
+        let pin = pins.pinByCfg(config.PIN_IR_IN);
+        
         enableIrMarkSpaceDetection(pin);
 
         let activeCommand = -1;
