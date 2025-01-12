@@ -164,6 +164,7 @@ namespace ZUMO_ir_VS1838 {
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=4
     //% pin.fieldOptions.tooltips=0
+    //% pin.defl = DAL.PA12
     //% weight=90
     export function connectIrReceiver(
         pin: DigitalInOutPin,
